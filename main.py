@@ -6,7 +6,9 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
-from starlette import status
+from app.routes.check import check_router
+from app.routes.svc import svc_router
+from app.routes.intro import intro_router
 
 
 app = FastAPI()
@@ -20,7 +22,9 @@ templates = Jinja2Templates(directory='views/templates')
 app.mount('/static', StaticFiles(directory='views/static'), name='static')
 
 # 외부 route 파일 불러오기
-
+app.include_router(check_router, prefix='/check')
+app.include_router(svc_router, prefix='/svc')
+app.include_router(intro_router, prefix='/intro')
 
 
 
