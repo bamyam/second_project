@@ -6,13 +6,19 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
+from app.dbfactory import db_startup
+
 from app.routes.check import check_router
 from app.routes.svc import svc_router
 from app.routes.intro import intro_router
 from app.routes.apply import apply_router
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    db_startup()
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 # 세션처리를 미들웨어 설정
 app.add_middleware(SessionMiddleware, secret_key='02232024duedate')
