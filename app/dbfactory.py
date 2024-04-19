@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.settings import config
 
-from app.models import employee, location, visitors
+from app.models import visitors
 
 
 engine = create_engine(config.db_conn, echo=True)
