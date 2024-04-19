@@ -2,7 +2,6 @@
 /* header */
 
 header {
-    border: 1px solid red;
     width: 100%;
     height: 200px;
     text-align: center;
@@ -22,7 +21,6 @@ header .main_title {
 
 
 header .main_list {
-    border: 1px solid red;
     font-size: 25px;
     margin: 50px;
     font-weight: bold;
