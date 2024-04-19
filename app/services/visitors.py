@@ -26,11 +26,12 @@ class VisitorsService:
             'department_name': mb.department_name,
             'job_position': mb.job_position,
             'phone_number': mb.phone_number,
-            'employee_name': mb.employee_name,
+            'employee_id': mb.employee_id,
             'purpose': mb.purpose,
-            'location': mb.location,
+            'location_id': mb.location_id,
             'status': mb.status,
-            'regdate': mb.regdate
+            'regdate': mb.regdate,
+            'visit_date': mb.visit_date
         }
 
         return data
