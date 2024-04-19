@@ -8,7 +8,7 @@ intro_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
 
 
-@intro_router.get('/intro', response_class=HTMLResponse)
+@intro_router.get('/', response_class=HTMLResponse)
 def check(req: Request):
     return templates.TemplateResponse('intro/intro.html', {'request': req})
 

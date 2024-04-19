@@ -8,6 +8,6 @@ check_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
 
 
-@check_router.get('/check', response_class=HTMLResponse)
+@check_router.get('/', response_class=HTMLResponse)
 def check(req: Request):
     return templates.TemplateResponse('check/check.html', {'request': req})
