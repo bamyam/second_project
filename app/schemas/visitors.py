@@ -13,7 +13,7 @@ class Visitors(BaseModel):
     location: str
     status: str
     regdate: datetime
-    visit_data: str
+    visit_date: str
 
     class Config:
         from_attributes = True
