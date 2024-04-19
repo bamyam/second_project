@@ -37,5 +37,6 @@ class Visitors(Base):
     purpose = Column(String(500), nullable=False)               # 방문 목적
     location_id = mapped_column(Integer, ForeignKey('location.id'))  # 방문 장소
     status = Column(String(1), default='N', nullable=False)     # 승인 상태(Y: 승인, N: 접수, R: 거절)
-    regdate = Column(String(10), nullable=True)                 # 신청일
+    regdate = Column(DateTime, default=datetime.now(), nullable=True)     # 신청일
+    visit_date = Column(String(10), nullable=True)   # 방문날짜
 
