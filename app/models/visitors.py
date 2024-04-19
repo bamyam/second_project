@@ -18,6 +18,6 @@ class Visitors(Base):
     employee_name = Column(String(20), ForeignKey('employee.name'))    # 담당자 이름
     purpose = Column(String(500), nullable=False)               # 방문 목적
     location = Column(String(100), ForeignKey('location.location'), nullable=False)  # 방문 장소
-    status = Column(String(1), default='N', nullable=False),    # 승인 상태(Y: 승인, N: 접수, R: 거절)
+    status = Column(String(1), default='N', nullable=False)    # 승인 상태(Y: 승인, N: 접수, R: 거절)
     regdate = Column(String(10), nullable=True)                 # 신청일
 
