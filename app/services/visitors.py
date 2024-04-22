@@ -2,6 +2,7 @@ from app.models.visitors import Visitors
 from sqlalchemy import insert
 from app.dbfactory import Session
 
+
 class VisitorsService:
 
     @staticmethod
@@ -10,10 +11,13 @@ class VisitorsService:
 
         with Session() as sess:
             stmt = insert(Visitors).values(data)
-            result = sess.execute(stmt)
+            sess.execute(stmt)
             sess.commit()
 
-        return result
+            result = sess.query(Visitors.id).filter_by(name=data['name']).scalar()
+
+            return result
+
 
     @staticmethod
     def visitor_convert(vmdto):
@@ -30,7 +34,8 @@ class VisitorsService:
             'purpose': mb.purpose,
             'location': mb.location,
             'status': mb.status,
-            'regdate': mb.regdate
+            'regdate': mb.regdate,
+            'visitdate': mb.visit_date
         }
 
         return data

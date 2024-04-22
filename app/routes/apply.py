@@ -14,11 +14,11 @@ templates = Jinja2Templates(directory='views/templates')
 def apply(req: Request):
     return templates.TemplateResponse('apply/apply.html', {'request': req})
 
-@apply_router.post('/apply')
-def apply(vmdto: Visitors):
+@apply_router.post('/applyok')
+def applyok(vmdto: Visitors):
     result = VisitorsService.insert_visitor(vmdto)
     return result.rowcount
 
-@apply_router.get('/apply', response_class=HTMLResponse)
-def applyok(req:Request):
-    return templates.TemplateResponse('/applyok.html', {'request': req})
+@apply_router.get('/applyok', response_class=HTMLResponse)
+def applycheck(req: Request):
+    return templates.TemplateResponse('apply/applyok.html', {'request': req})

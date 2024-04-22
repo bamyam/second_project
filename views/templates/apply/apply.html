@@ -102,7 +102,7 @@
                     </div>
                     <div id="rank">
                         <div class="col-auto">
-                            <label for="youCo" class="col-form-label">직급</label>
+                            <label for="rank" class="col-form-label">직급</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>직급 선택</option>
                                 <option value="1">킹</option>
@@ -116,7 +116,7 @@
                 <div class="info_minibox2">
                     <div id="vcompany">
                         <div class="col-auto">
-                            <label for="youCo" class="col-form-label">방문할 회사</label>
+                            <label for="vcompany" class="col-form-label">방문할 회사</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>방문 회사</option>
                                 <option value="1">성은컴퍼니</option>
@@ -125,40 +125,46 @@
                             </select>
                         </div>
                     </div>
-                    <div id="dept">
+                    <div id="departure">
                         <div class="col-auto">
-                            <label for="name" class="col-form-label">부서명</label>
+                            <label for="departure" class="col-form-label">부서명</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="name" class="form-control">
+                            <input type="text" id="departure" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
                     <div id="vlocation">
                         <div class="col-auto">
-                            <label for="pnumber" class="col-form-label">방문장소</label>
+                            <label for="vlocation" class="col-form-label">방문장소</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="pnumber" class="form-control">
+                            <input type="text" id="vlocation" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
                     <div id="vpurpose">
                         <div class="col-auto">
-                            <label for="youCo" class="col-form-label">방문목적</label>
+                            <label for="vpurpose" class="col-form-label">방문목적</label>
                         </div>
-                        <div class="youCo">
-                            <input type="text" id="youCo" class="form-control">
+                        <div class="vpurpose">
+                            <input type="text" id="vpurpose" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
+                    <div class="date">
+                        <div class="col-auto">
+                            <label for="date" class="col-form-label">신청일자</label>
+                            <label for="start"></label><input type="date" id="date" name="trip-start" value="2024-04-11">
+                        </div>
+                    </div>
                     <div class="vdate">
                         <div class="col-auto">
-                            <label for="name" class="col-form-label">방문일자</label>
-                            <label for="start"></label><input type="date" id="start" name="trip-start" value="2024-04-11">
+                            <label for="vdate" class="col-form-label">방문일자</label>
+                            <label for="start"></label><input type="date" id="vdate" name="trip-start" value="2024-04-11">
                         </div>
                     </div>
                 </div>
@@ -185,58 +191,67 @@
             let name = applyfrm.name.value;
             let pnumber = applyfrm.pnumber.value;
             let email = applyfrm.email.value;
-            let email = applyfrm.email.value;
-            let birth = applyfrm.birth.value;
-            let phone = applyfrm.phone.value;
+            let cname = applyfrm.cname.value;
+            let rank = applyfrm.rank.value;
+            let vcompany = applyfrm.vcompany.value;
+            let departure = applyfrm.departure.value;
+            let vlocation = applyfrm.vlocation.value;
+            let vpurpose = applyfrm.vpurpose.value;
+            let date = applyfrm.date.value;
+            let vdate = applyfrm.vdate.value;
 
             // 필수 필드 확인
-            if (!userId) {
-                alert('userId 를 입력해주세요.');
-                joinfrm.userid.focus();
-                return false;
-            }
-
-            if (!password) {
-                alert('password 를 입력해주세요.');
-                joinfrm.passwd.focus();
-                return false;
-            }
-
             if (!name) {
-                alert('name 를 입력해주세요.');
-                joinfrm.name.focus();
+                alert('성함을 입력해주세요.');
+                applyfrm.name.focus();
+                return false;
+            }
+
+            if (!pnumber) {
+                alert('연락처를 입력해주세요.');
+                applyfrm.pnumber.focus();
                 return false;
             }
 
             if (!email) {
                 alert('email 를 입력해주세요.');
-                joinfrm.email.focus();
+                applyfrm.email.focus();
                 return false;
             }
 
-            if (!birth) {
-                alert('birth 를 입력해주세요.');
+            if (!cname) {
+                alert('귀사의 이름을 입력해주세요.');
+                applyfrm.cname.focus();
                 return false;
             }
 
-            if (!phone) {
-                alert('phone 를 입력해주세요.');
-                joinfrm.phone.focus();
+            if (!rank) {
+                alert('직급을 입력해주세요.');
+                applyfrm.rank.focus();
                 return false;
             }
 
-            let useridRegex = /^[a-zA-Z0-9]{6,50}$/; // 영문자와 숫자로 이루어진 6자 이상, 50자 이하의 문자열을 허용하는 정규표현식
-            if (!useridRegex.test(userId)) {
-                alert('아이디는 영문자와 숫자로 이루어진 6자 이상, 50자 이하의 형태로 입력해주세요.');
-                joinfrm.userid.focus();
+            if (!vcompany) {
+                alert('직급을 입력해주세요.');
+                applyfrm.vcompany.focus();
                 return false;
             }
 
-            // 이메일 유효성 검사
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('올바른 이메일 주소를 입력해주세요.');
-                joinfrm.email.focus();
+            if (!departure) {
+                alert('부서를 입력해주세요.');
+                applyfrm.departure.focus();
+                return false;
+            }
+
+            if (!vlocation) {
+                alert('방문할 회사를 입력해주세요.');
+                applyfrm.vlocation.focus();
+                return false;
+            }
+
+            if (!vpurpose) {
+                alert('방문목적을 입력해주세요.');
+                applyfrm.vpurpose.focus();
                 return false;
             }
 
@@ -244,12 +259,42 @@
             let phoneRegex = /^\d{10,11}$/;
             if (!phoneRegex.test(phone)) {
                 alert('올바른 핸드폰 번호를 입력해주세요.');
-                joinfrm.phone.focus();
+                applyfrm.pnumber.focus();
                 return false;
             }
 
             return true;
         }
+
+        function submitFormData() {
+            let applyfrm = document.applyfrm;
+            let formData = new FormData(applyfrm);
+            let jsonData = {};
+
+            formData.forEach(function(val, key) {
+                jsonData[key] = val;
+            });
+
+            let apiUrl = `/applyok`;
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(res => res.text())
+                .then(data => {
+                    if (data > 0) {
+                        location.href = '/applyok.html';
+                    } else {
+                        location.href = '/apply.html';
+                    }
+                })
+                .catch(err => alert('입력하신 정보를 다시 한 번 확인해주세요.'));
+        }
+        document.querySelector('#applybtn').addEventListener('click', submitFormData);
     </script>
 
 
