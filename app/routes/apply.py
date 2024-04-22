@@ -9,6 +9,9 @@ templates = Jinja2Templates(directory='views/templates')
 
 
 @apply_router.get('/', response_class=HTMLResponse)
-def check(req: Request):
+def apply(req: Request):
     return templates.TemplateResponse('apply/apply.html', {'request': req})
 
+@apply_router.get('/applyok', response_class=HTMLResponse)
+def applyok(req: Request):
+    return templates.TemplateResponse('apply/applyok.html', {'request': req})
