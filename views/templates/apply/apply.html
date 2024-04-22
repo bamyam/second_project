@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block style %}
+
 <style>
     .info_box {
         padding-top: 1px;
@@ -53,6 +54,7 @@
         margin-right: 10px;
     }
 </style>
+
 {% endblock %}
 {% block main %}
     <main>
@@ -186,6 +188,7 @@
 {% endblock %}
 {% block script %}
     <script>
+
         function validateForm() {
             let applyfrm = document.applyfrm
             let name = applyfrm.name.value;
@@ -295,7 +298,18 @@
                 .catch(err => alert('입력하신 정보를 다시 한 번 확인해주세요.'));
         }
         document.querySelector('#applybtn').addEventListener('click', submitFormData);
-    </script>
 
+        // 오늘 날짜를 가져오는 함수
+        function getTodayDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // 0부터 시작하므로 1을 더함
+            var yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        // input 요소에 오늘 날짜 설정
+        document.getElementById('start').value = getTodayDate();
+    </script>
 
 {% endblock %}

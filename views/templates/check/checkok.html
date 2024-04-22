@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+    .main_box{
+        position: relative
+    }
+    .title_text{
+
+        font-weight: bold;
+        font-size: 40px;
+        color: white;
+        text-shadow: 2px 4px 2px black;
+        position: absolute;
+        top: -80px;
+    }
+    .main_box {
+        width: 1300px;
+        background-color: white;
+    }
+    .table_name{
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    .table_name th {
+        padding: 5px 22px 5px 22px;
+        border: 1px solid black;
+        text-align: center;
+        text-shadow: 0 1px 1px gray;
+    }
+    .table_name_title {
+        background-color: #BDBDBD;
+        font-size: 16px;
+    }
+    .guide_text {
+        font-size: 30px;
+        font-weight: bold;
+        text-shadow: 1px 2px 1px gray;
+        text-align: center;
+        margin-top: 260px;
+    }
+    .btn_box {
+        text-align: center;
+        padding-top: 20px;
+
+    }
+    .btn1 {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .btn2 {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    </style>
+{% endblock %}
+{% block main %}
+    <main>
+
+    <div class="main_box">
+        <div class="info_box">
+            <div class="title_text">
+                조회 정보
+            </div>
+            <table class="table_name">
+                <tr class="table_name_title">
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>이메일</th>
+                    <th>회사이름</th>
+                    <th>직급</th>
+                    <th>방문회사</th>
+                    <th>부서</th>
+                    <th>방문장소</th>
+                    <th>방문목적</th>
+                    <th>방문일자</th>
+                    <th>승인여부</th>
+                </tr>
+                <tr>
+                    <th>조주현</th>
+                    <th>010-1234-5678</th>
+                    <th>abc123@naver.com</th>
+                    <th>projectB</th>
+                    <th>사원</th>
+                    <th>SJCOMPANY</th>
+                    <th>인프라팀</th>
+                    <th>서버실</th>
+                    <th>서버점검</th>
+                    <th>2024-04-22</th>
+                    <th>요청중</th>
+                </tr>
+            </table>
+        </div>
+        <div class="guide_text">
+            신청해 주신 방문 신청은 금일 16:00에 일괄처리 예정입니다.
+            <br>
+            승인 거절에 대한 자세한 내용은 고객센터로 문의하여 주시기 바랍니다.
+        </div>
+        <div class="btn_box">
+            <div class="btn1">
+                <button type="button" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark" onClick="location.href='/'">&nbsp;홈으로&nbsp;</button>
+            </div>
+            <div class="btn2">
+                <button type="button" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark" onClick="location.href='/svc'">고객센터</button>
+            </div>
+
+    </div>
+    </main>
+{% endblock %}
