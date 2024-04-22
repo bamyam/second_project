@@ -48,6 +48,9 @@
     display: inline-block;
     margin-right: 10px;
 }
+.date {
+    margin-top: 38px;
+}
     </style>
 {% endblock %}
 {% block main %}
@@ -151,8 +154,8 @@
                     </div>
                     <div class="date">
                         <div class="col-auto">
-                            <label for="name" class="col-form-label">방문일자</label>
-                            <label for="start"></label><input type="date" id="start" name="trip-start" value="2024-04-11">
+                            <label for="name" class="col-form-label">방문일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label for="start"></label><input type="date" id="start" name="trip-start" value="">
                         </div>
                     </div>
                 </div>
@@ -179,5 +182,16 @@
 {% endblock %}
 {% block script %}
     <script>
+        // 오늘 날짜를 가져오는 함수
+        function getTodayDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // 0부터 시작하므로 1을 더함
+            var yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        // input 요소에 오늘 날짜 설정
+        document.getElementById('start').value = getTodayDate();
     </script>
 {% endblock %}
