@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class Visitors(BaseModel):
     name: str
@@ -11,7 +12,8 @@ class Visitors(BaseModel):
     purpose: str
     location: str
     status: str
-    regdate: str
+    regdate: datetime
+    visit_date: str
 
     class Config:
         from_attributes = True

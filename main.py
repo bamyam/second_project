@@ -12,6 +12,7 @@ from app.routes.check import check_router
 from app.routes.svc import svc_router
 from app.routes.intro import intro_router
 from app.routes.admin import admin_router
+from app.routes.apply import apply_router
 
 
 @asynccontextmanager
@@ -34,6 +35,8 @@ app.include_router(check_router, prefix='/check')
 app.include_router(svc_router, prefix='/svc')
 app.include_router(intro_router, prefix='/intro')
 app.include_router(admin_router, prefix='/admin')
+app.include_router(apply_router, prefix='/apply')
+
 
 
 
