@@ -30,7 +30,7 @@
             border-radius: 15px;
         }
 
-        #regectModal {
+        #rejectModal {
             display: none;
             position: fixed;
             top: 50%;
@@ -55,7 +55,7 @@
             z-index: 0;
         }
 
-        #acceptModal > div > p {
+        #acceptModal > div > p, #rejectModal > div > p {
             display: inline-block;
             font-size: 20px;
         }
@@ -100,7 +100,7 @@
                         <td>N(접수 중)</td>
                         <td>
                             <button onclick="openModal1(this)" type="button" class="btn btn-primary">승인</button>
-                            <button onclick="openModal2()" type="button" class="btn btn-danger">거절</button>
+                            <button onclick="openModal2(this)" type="button" class="btn btn-danger">거절</button>
                         </td>
                     </tr>
                     <tr>
@@ -158,13 +158,13 @@
                         <th>이름</th>
                     </tr>
                     <tr>
-                        <td id="company">컴퍼니</td>
-                        <td id="visit_depart">기획부</td>
-                        <td id="visit_posit">부장</td>
-                        <td id="visit_name">서승재</td>
+                        <td id="company">00</td>
+                        <td id="visit_depart">00</td>
+                        <td id="visit_posit">00</td>
+                        <td id="visit_name">00</td>
                     </tr>
                 </table>
-                <table>
+                <table class="table table-borderd">
                     <tr>
                         <th colspan="4">담당자</th>
                     </tr>
@@ -175,10 +175,10 @@
                         <th>보안등급</th>
                     </tr>
                     <tr>
-                        <td id="emp_depart">부서</td>
-                        <td id="emp_posit">직급</td>
-                        <td id="emp_name">이름</td>
-                        <td id="emp_sg">보안등급</td>
+                        <td id="emp_depart">00</td>
+                        <td id="emp_posit">00</td>
+                        <td id="emp_name">00</td>
+                        <td id="emp_sg">00</td>
                     </tr>
                     <tr>
                         <th colspan="2">방문목적</th>
@@ -186,15 +186,60 @@
                         <th>보안등급</th>
                     </tr>
                     <tr>
-                        <td colspan="2" id="purpose">업무미팅</td>
-                        <td id="location">다목적실B</td>
-                        <td id="loc_sg">2</td>
+                        <td colspan="2" id="purpose">00</td>
+                        <td id="location">00</td>
+                        <td id="loc_sg">0</td>
                     </tr>
                 </table>
             </div>
             <div>
                 <button onclick="closeModal1()" type="button">이전</button>
                 <button type="button" id="accept_btn">승인</button>
+            </div>
+        </div>
+
+        <div id="rejectModal" style="z-index: 10">
+            <div style="display: none" id="number_r">01</div>
+            <div>
+                <p id="reject_name">OOO</p><p>의 출입을 거부하시겠습니까?</p>
+            </div>
+            <div>
+                <table class="table table-borderd">
+                    <tr>
+                        <th colspan="4">출입자</th>
+                    </tr>
+                    <tr>
+                        <th>회사</th>
+                        <th>부서</th>
+                        <th>직급</th>
+                        <th>이름</th>
+                    </tr>
+                    <tr>
+                        <td id="company_r">00</td>
+                        <td id="visit_depart_r">00</td>
+                        <td id="visit_posit_r">00</td>
+                        <td id="visit_name_r">00</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">방문목적</th>
+                        <th>방문장소</th>
+                        <th>보안등급</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="purpose_r">00</td>
+                        <td id="location_r">00</td>
+                        <td id="loc_sg_r">00</td>
+                    </tr>
+                </table>
+                <div>
+                    <label for="reason"><strong>거부사유</strong></label>
+                </div>
+                <textarea id="reason" class="textarea"></textarea>
+
+            </div>
+            <div>
+                <button onclick="closeModal2()" type="button">이전</button>
+                <button type="button" id="reject_btn">승인</button>
             </div>
         </div>
         <div id="overlay"></div>
@@ -213,26 +258,46 @@ let openModal1 = (button) => {
     document.getElementById("visit_depart").innerText = row.cells[3].innerText;
     document.getElementById("visit_posit").innerText = row.cells[4].innerText;
     document.getElementById("visit_name").innerText = row.cells[5].innerText;
-
-    let data1 = row.cells[3].innerText;
-    let parts = data.split(' ');
+    let data1 = row.cells[7].innerText;
+    let parts = data1.split(' ');
     let depart = parts[0];
     let position = parts[1];
     let name = parts[2].slice(0, -3);
     let sg = parts[2].slice(-2, -1);
-
     document.getElementById("emp_depart").innerText = depart;
     document.getElementById("emp_posit").innerText = position;
     document.getElementById("emp_name").innerText = name;
     document.getElementById("emp_sg").innerText = sg;
 
+    document.getElementById("purpose").innerText = row.cells[8].innerText;
+    let data2 = row.cells[9].innerText;
+    let loc = data2.slice(0, -3);
+    let loc_sg = data2.slice(-2, -1);
+    document.getElementById("location").innerText = loc;
+    document.getElementById("loc_sg").innerText = loc_sg;
 
     document.getElementById("acceptModal").style.display = "block";
     document.getElementById("overlay").style.display = "block";
 }
 
-let openModal2 = () => {
-    document.getElementById("regectModal").style.display = "block";
+let openModal2 = (button) => {
+    let row = button.parentNode.parentNode;
+
+    document.getElementById("number_r").innerText = row.cells[0].innerText;
+    document.getElementById("reject_name").innerText = row.cells[5].innerText;
+    document.getElementById("company_r").innerText = row.cells[2].innerText;
+    document.getElementById("visit_depart_r").innerText = row.cells[3].innerText;
+    document.getElementById("visit_posit_r").innerText = row.cells[4].innerText;
+    document.getElementById("visit_name_r").innerText = row.cells[5].innerText;
+
+    document.getElementById("purpose_r").innerText = row.cells[8].innerText;
+    let data2 = row.cells[9].innerText;
+    let loc = data2.slice(0, -3);
+    let loc_sg = data2.slice(-2, -1);
+    document.getElementById("location_r").innerText = loc;
+    document.getElementById("loc_sg_r").innerText = loc_sg;
+
+    document.getElementById("rejectModal").style.display = "block";
     document.getElementById("overlay").style.display = "block";
 }
 
@@ -242,14 +307,31 @@ let closeModal1 = () => {
 }
 
 let closeModal2 = () => {
-    document.getElementById("regectModal").style.display = "none";
+    document.getElementById("rejectModal").style.display = "none";
     document.getElementById("overlay").style.display = "none";
 }
+</script>
 
+<script>
 let accept_btn = document.querySelector('#accept_btn');
 
 accept_btn.addEventListener('click', () => {
     let jsondata = {};
-})
+    jsondata['number'] = document.getElementById("number").innerText;
+
+    fetch('http://127.0.0.1:8000/admin/accept', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsondata),
+        redirect: 'follow'
+    })
+        .then((res) => {
+        if (res.redirected) location.href = res.url
+    })
+        .catch((err) => console.log(err));
+});
 </script>
 {% endblock %}
