@@ -4,7 +4,6 @@ main {
 }
 
 .main_box {
-    #border: 1px solid blue;
     margin: 70px auto;
     width: 1000px;
     height: 500px;
