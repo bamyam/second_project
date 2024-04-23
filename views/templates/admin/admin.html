@@ -85,58 +85,34 @@
                             승인/거절
                         </th>
                     </tr>
+                    {% for i in info %}
                     <tr>
-                        <td>1</td>
-                        <td>2024.04.05 12:19</td>
-                        <td>삼성전자</td>
-                        <td>기획부</td>
-                        <td>부장</td>
-                        <td>서승재</td>
-                        <td>010-1234-5678</td>
-                        <td>재정부 과장 김모씨(2)</td>
-                        <td>업무미팅</td>
-                        <td>2층 다목적실B(3)</td>
-                        <td>2024-04-17</td>
-                        <td>N(접수 중)</td>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.regdate }}</td>
+                        <td>{{ i.company_name }}</td>
+                        <td>{{ i.department_name }}</td>
+                        <td>{{ i.job_position }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.phone_number }}</td>
+                        <td>{{ i.department_name_1 }} {{ i.job_position_1 }} {{ i.name_1 }}({{ i.security_grade }})</td>
+                        <td>{{ i.purpose }}</td>
+                        <td>{{ i.location }}({{ i.security_grade_1 }})</td>
+                        <td>{{ i.visit_date }}</td>
+                        {% if i.status == "N" %}
+                        <td>{{ i.status }}(접수 중)</td>
                         <td>
                             <button onclick="openModal1(this)" type="button" class="btn btn-primary">승인</button>
                             <button onclick="openModal2(this)" type="button" class="btn btn-danger">거절</button>
                         </td>
+                        {% elif i.status == "Y" %}
+                        <td>{{ i.status }}(승인)</td>
+                        <td>승인완료</td>
+                        {% elif i.status == "R" %}
+                        <td>{{ i.status }}(거절)</td>
+                        <td>거절완료</td>
+                        {% endif %}
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2024.04.05 12:19</td>
-                        <td>삼성전자</td>
-                        <td>기획부</td>
-                        <td>부장</td>
-                        <td>차승원</td>
-                        <td>010-1234-5678</td>
-                        <td>재정부 대리 김모씨(3)</td>
-                        <td>업무미팅</td>
-                        <td>2층 기획실(2)</td>
-                        <td>2024-04-17</td>
-                        <td>R(거절)</td>
-                        <td>
-                            거절완료
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2024.04.05 12:19</td>
-                        <td>삼성전자</td>
-                        <td>기획부</td>
-                        <td>부장</td>
-                        <td>김신록</td>
-                        <td>010-1234-5678</td>
-                        <td>재정부 대리 김모씨(1)</td>
-                        <td>업무미팅</td>
-                        <td>2층 기획실(2)</td>
-                        <td>2024-04-17</td>
-                        <td>Y(승인)</td>
-                        <td>
-                            승인완료
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </form>
         </div>
@@ -239,7 +215,7 @@
             </div>
             <div>
                 <button onclick="closeModal2()" type="button">이전</button>
-                <button type="button" id="reject_btn">승인</button>
+                <button type="button" id="reject_btn">거절</button>
             </div>
         </div>
         <div id="overlay"></div>
@@ -333,5 +309,29 @@ accept_btn.addEventListener('click', () => {
     })
         .catch((err) => console.log(err));
 });
+</script>
+<script>
+let reject_btn = document.querySelector('#reject_btn');
+
+reject_btn.addEventListener('click', () => {
+    let jsondata = {};
+    jsondata['number'] = document.getElementById("number_r").innerText;
+    jsondata['reason'] = document.getElementById("reason").value;
+
+    fetch('http://127.0.0.1:8000/admin/reject', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsondata),
+        redirect: 'follow'
+    })
+        .then((res) => {
+            if (res.redirected) location.href = res.url
+        })
+        .catch((err) => console.log(err));
+
+})
 </script>
 {% endblock %}
