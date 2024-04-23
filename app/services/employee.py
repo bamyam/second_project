@@ -15,6 +15,6 @@ class EmployeeService:
             List[Employee]: 조회된 직원 정보 목록
         """
         with Session() as session:
-            statement = select(Employee)
+            statement = select(Employee.id, Employee.name, Employee.job_position, Employee.department_name, Employee.phone_number, Employee.email, Employee.security_grade)
             result = session.execute(statement).fetchall()
             return result
