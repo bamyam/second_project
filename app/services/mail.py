@@ -1,9 +1,31 @@
 import smtplib
 from email.message import EmailMessage
 import os
+
+from sqlalchemy import select
+
+from app.dbfactory import Session
+from app.models.visitors import Visitors
+
 GMAIL_PASS = os.getenv("GMAIL_PASS")
 
 class MailService:
+    @staticmethod
+    def find_data(number):
+        visitor_name, visitor_email, time = '', '', ''
+
+        with Session() as sess:
+            stmt = select(Visitors.name, Visitors.email, Visitors.regdate).where(Visitors.id == number)
+            result = sess.execute(stmt)
+
+        for i in result:
+            visitor_name = i.name
+            visitor_email = i.email
+            time = i.regdate
+
+        return visitor_name, visitor_email, time
+
+
     @staticmethod
     def mail_accepted(visitor_name, visitor_email, time):
         smtp = smtplib.SMTP("smtp.gmail.com", 587)
