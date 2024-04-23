@@ -1,107 +1,107 @@
 {% extends 'base.html' %}
 {% block style %}
-    <style>
-        .info_box {
-            padding-top: 1px;
-            margin:  0 auto;
-            width: 900px;
-        }
-        .info_minibox1, .info_minibox2 {
-            float: left;
-            #border: 1px solid red;
-            width: 450px;
-            height: 400px;
-            font-weight: bold;
-            padding: 10px;
-            margin-top: 30px;
-            background-color: white;
-            box-shadow: 0 1px 1px 0 black;
-            font-size: 12px;
-        }
-        .clearfix {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        .btn_box {
-            text-align: center;
-            padding-top: 10px;
-        }
-        .applybtn, .rwbtn, .cancelbtn {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        .date_all {
-            font-size: 14px;
-            margin-top: 5px;
-            text-align: center;
-        }
-        .date, .vdate {
-            display: inline-block;
-        }
-    </style>
+<style>
+    .info_box {
+        padding-top: 1px;
+        margin:  0 auto;
+        width: 900px;
+    }
+    .info_minibox1, .info_minibox2 {
+        float: left;
+        #border: 1px solid red;
+        width: 450px;
+        height: 400px;
+        font-weight: bold;
+        padding: 10px;
+        margin-top: 30px;
+        background-color: white;
+        box-shadow: 0 1px 1px 0 black;
+        font-size: 12px;
+    }
+    .clearfix {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .btn_box {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .applybtn, .rwbtn, .cancelbtn {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .date_all {
+        font-size: 14px;
+        margin-top: 5px;
+        text-align: center;
+    }
+    .date, .vdate {
+        display: inline-block;
+    }
+</style>
 
 
 {% endblock %}
 {% block main %}
     <main>
-        <form name="applyfrm">
-            <div class="main_box">
-                <div class="info_box">
-                    <div class="info_minibox1">
-                        <div id="name">
-                            <div class="col-auto">
-                                <label for="name" class="col-form-label">이름</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="text" id="name" class="form-control">
-                            </div>
-                            <div class="col-auto">
-                            </div>
+    <form name="applyfrm">
+        <div class="main_box">
+            <div class="info_box">
+                <div class="info_minibox1">
+                    <div id="name">
+                        <div class="col-auto">
+                            <label for="name" class="col-form-label">이름</label>
                         </div>
-                        <div id="pnumber">
-                            <div class="col-auto">
-                                <label for="pnumber" class="col-form-label">전화번호</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="text" id="pnumber" class="form-control">
-                            </div>
-                            <div class="col-auto">
-                            </div>
+                        <div class="col-auto">
+                            <input type="text" id="name" class="form-control">
                         </div>
-                        <div id="email">
-                            <div class="col-auto">
-                                <label for="email" class="col-form-label">이메일</label>
-                            </div>
-                            <div class="youCo">
-                                <input type="text" id="email" class="form-control">
-                            </div>
-                            <div class="col-auto">
-                            </div>
+                        <div class="col-auto">
                         </div>
-                        <div id="cname">
-                            <div class="col-auto">
-                                <label for="cname" class="col-form-label">회사이름</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="text" id="cname" class="form-control">
-                            </div>
-                            <div class="col-auto">
-                            </div>
+                    </div>
+                    <div id="pnumber">
+                        <div class="col-auto">
+                            <label for="pnumber" class="col-form-label">전화번호</label>
                         </div>
-                        <div id="rank">
-                            <div class="col-auto">
-                                <label for="rank" class="col-form-label">직급</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>직급 선택</option>
-                                    <option value="1">킹</option>
-                                    <option value="2">왕</option>
-                                    <option value="3">짱</option>
-                                </select>
-                            </div>
+                        <div class="col-auto">
+                            <input type="text" id="pnumber" class="form-control">
+                        </div>
+                        <div class="col-auto">
+                        </div>
+                    </div>
+                    <div id="email">
+                        <div class="col-auto">
+                            <label for="email" class="col-form-label">이메일</label>
+                        </div>
+                        <div class="youCo">
+                            <input type="text" id="email" class="form-control">
+                        </div>
+                        <div class="col-auto">
+                        </div>
+                    </div>
+                    <div id="cname">
+                        <div class="col-auto">
+                            <label for="cname" class="col-form-label">회사이름</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="cname" class="form-control">
+                        </div>
+                        <div class="col-auto">
+                        </div>
+                    </div>
+                    <div id="rank">
+                        <div class="col-auto">
+                            <label for="rank" class="col-form-label">직급</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>직급 선택</option>
+                                <option value="1">킹</option>
+                                <option value="2">왕</option>
+                                <option value="3">짱</option>
+                            </select>
                         </div>
                     </div>
                 </div>
+            </div>
                 <div class="info_minibox2">
                     <div id="vcompany">
                         <div class="col-auto">
@@ -169,21 +169,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="btn_box">
-                    <div class="applybtn">
-                        <button type="button" name="applybtn" id="applybtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">방문신청</button>
-                    </div>
-                    <div class="rwbtn">
-                        <button type="button" name="rwbtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">&nbsp;재작성&nbsp;</button>
-                    </div>
-                    <div class="cancelbtn">
-                        <button type="button" name="cancelbtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">방문취소</button>
-                    </div>
+            <div class="clearfix"></div>
+            <div class="btn_box">
+                <div class="applybtn">
+                    <button type="button" name="applybtn" id="applybtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">방문신청</button>
+                </div>
+                <div class="rwbtn">
+                    <button type="button" name="rwbtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">&nbsp;재작성&nbsp;</button>
+                </div>
+                <div class="cancelbtn">
+                    <button type="button" name="cancelbtn" class="form-control btn btn-light btn-outline-dark btn-lg theme-btn--dark-inverse sqs-button-element--dark">방문취소</button>
                 </div>
             </div>
-        </form>
-    </main>
+        </div>
+    </form>
+</main>
 {% endblock %}
 {% block script %}
     <script>
@@ -308,7 +308,7 @@
         }
 
         // input 요소에 오늘 날짜 설정
-        document.getElementById('date').value = getTodayDate();
+        document.getElementById('start').value = getTodayDate();
     </script>
 
 {% endblock %}
