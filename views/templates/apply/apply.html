@@ -1,37 +1,23 @@
 {% extends 'base.html' %}
 {% block style %}
-
-
 <style>
     .info_box {
         padding-top: 1px;
         margin:  0 auto;
         width: 900px;
     }
-    .info_minibox1 {
+    .info_minibox1, .info_minibox2 {
         float: left;
         #border: 1px solid red;
         width: 450px;
         height: 400px;
         font-weight: bold;
         padding: 10px;
-        margin-top: 40px;
+        margin-top: 30px;
         background-color: white;
         box-shadow: 0 1px 1px 0 black;
+        font-size: 12px;
     }
-    .info_minibox2 {
-        #border: 1px solid red;
-        float: left;
-        width: 450px;
-        height: 400px;
-        font-weight: bold;
-        padding: 10px;
-        margin-top: 40px;
-        background-color: white;
-        box-shadow: 0 1px 1px 0 black;
-    }
-
-
     .clearfix {
         content: "";
         display: block;
@@ -39,20 +25,19 @@
     }
     .btn_box {
         text-align: center;
-        padding-top: 5px;
-
+        padding-top: 10px;
     }
-    .applybtn {
+    .applybtn, .rwbtn, .cancelbtn {
         display: inline-block;
         margin-right: 10px;
     }
-    .rwbtn {
-        display: inline-block;
-        margin-right: 10px;
+    .date_all {
+        font-size: 14px;
+        margin-top: 5px;
+        text-align: center;
     }
-    .cancelbtn {
+    .date, .vdate {
         display: inline-block;
-        margin-right: 10px;
     }
 </style>
 
@@ -139,6 +124,16 @@
                         <div class="col-auto">
                         </div>
                     </div>
+                    <div id="employee_id">
+                        <div class="col-auto">
+                            <label for="employee_id" class="col-form-label">담당자</label>
+                            <select class="form-select" aria-label="">
+                                {% for emp in emp_list %}
+                                    <option value="{{ emp.id }}">{{emp.name}} {{emp.job_position}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                     <div id="vlocation">
                         <div class="col-auto">
                             <label for="vlocation" class="col-form-label">방문장소</label>
@@ -159,16 +154,18 @@
                         <div class="col-auto">
                         </div>
                     </div>
-                    <div class="date">
-                        <div class="col-auto">
-                            <label for="date" class="col-form-label">신청일자</label>
-                            <label for="start"></label><input type="date" id="date" name="trip-start" value="2024-04-11">
+                    <div class="date_all">
+                        <div class="date">
+                            <div class="col-auto">
+                                <label for="date" class="col-form-label">신청일자</label>
+                                <label for="start"></label><input type="date" id="date" name="trip-start" value="2024-04-11">
+                            </div>
                         </div>
-                    </div>
-                    <div class="vdate">
-                        <div class="col-auto">
-                            <label for="vdate" class="col-form-label">방문일자</label>
-                            <label for="start"></label><input type="date" id="vdate" name="trip-start" value="2024-04-11">
+                        <div class="vdate">
+                            <div class="col-auto">
+                                <label for="vdate" class="col-form-label">방문일자</label>
+                                <label for="start"></label><input type="date" id="vdate" name="trip-start" value="2024-04-11">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,7 +308,7 @@
         }
 
         // input 요소에 오늘 날짜 설정
-        document.getElementById('start').value = getTodayDate();
+        document.getElementById('date').value = getTodayDate();
     </script>
 
 {% endblock %}
