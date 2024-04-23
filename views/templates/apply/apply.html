@@ -127,11 +127,11 @@
                     <div id="employee_id">
                         <div class="col-auto">
                             <label for="employee_id" class="col-form-label">담당자</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" id="employee_id" name="employee_id" class="form-control">
-                        </div>
-                        <div class="col-auto">
+                            <select class="form-select" aria-label="">
+                                {% for emp in emp_list %}
+                                    <option value="{{ emp.id }}">{{emp.name}} {{emp.job_position}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div id="purpose">
