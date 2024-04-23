@@ -8,7 +8,7 @@ svc_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
 
 
-@svc_router.get('/svc', response_class=HTMLResponse)
+@svc_router.get('/', response_class=HTMLResponse)
 def check(req: Request):
     return templates.TemplateResponse('svc/svc.html', {'request': req})
 
