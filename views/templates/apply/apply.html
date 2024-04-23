@@ -54,17 +54,17 @@
                             <label for="name" class="col-form-label">이름</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="name" class="form-control">
+                            <input type="text" id="name" name="name" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
-                    <div id="pnumber">
+                    <div id="phone_number">
                         <div class="col-auto">
-                            <label for="pnumber" class="col-form-label">전화번호</label>
+                            <label for="phone_number" class="col-form-label">전화번호</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="pnumber" class="form-control">
+                            <input type="text" id="phone_number" name="phone_number" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
@@ -73,26 +73,26 @@
                         <div class="col-auto">
                             <label for="email" class="col-form-label">이메일</label>
                         </div>
-                        <div class="youCo">
-                            <input type="text" id="email" class="form-control">
+                        <div class="email">
+                            <input type="text" id="email" name="email" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
-                    <div id="cname">
+                    <div id="company_name">
                         <div class="col-auto">
                             <label for="cname" class="col-form-label">회사이름</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="cname" class="form-control">
+                            <input type="text" id="company_name" name="company_name" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
-                    <div id="rank">
+                    <div id="job_position">
                         <div class="col-auto">
-                            <label for="rank" class="col-form-label">직급</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <label for="job_position" class="col-form-label">직급</label>
+                            <select class="form-select" name="job_position" aria-label="Default select example">
                                 <option selected>직급 선택</option>
                                 <option value="1">킹</option>
                                 <option value="2">왕</option>
@@ -103,10 +103,10 @@
                 </div>
             </div>
                 <div class="info_minibox2">
-                    <div id="vcompany">
+                    <div id="location">
                         <div class="col-auto">
-                            <label for="vcompany" class="col-form-label">방문할 회사</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <label for="location" class="col-form-label">방문할 회사</label>
+                            <select class="form-select" name="location" aria-label="Default select example">
                                 <option selected>방문 회사</option>
                                 <option value="1">성은컴퍼니</option>
                                 <option value="2">윤성컴퍼니</option>
@@ -114,57 +114,47 @@
                             </select>
                         </div>
                     </div>
-                    <div id="departure">
+                    <div id="department_name">
                         <div class="col-auto">
-                            <label for="departure" class="col-form-label">부서명</label>
+                            <label for="department_name" class="col-form-label">부서명</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="departure" class="form-control">
+                            <input type="text" id="department_name" name="department_name" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
                     <div id="employee_id">
                         <div class="col-auto">
-                            <label for="departure" class="col-form-label">담당자</label>
+                            <label for="employee_id" class="col-form-label">담당자</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="employee_id" class="form-control">
-                        </div>
-                        <div class="col-auto">
-                        </div>
-                    </div>
-                    <div id="vlocation">
-                        <div class="col-auto">
-                            <label for="vlocation" class="col-form-label">방문장소</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" id="vlocation" class="form-control">
+                            <input type="text" id="employee_id" name="employee_id" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
-                    <div id="vpurpose">
+                    <div id="purpose">
                         <div class="col-auto">
-                            <label for="vpurpose" class="col-form-label">방문목적</label>
+                            <label for="purpose" class="col-form-label">방문목적</label>
                         </div>
-                        <div class="vpurpose">
-                            <input type="text" id="vpurpose" class="form-control">
+                        <div class="purpose">
+                            <input type="text" id="purpose" name="purpose" class="form-control">
                         </div>
                         <div class="col-auto">
                         </div>
                     </div>
                     <div class="date_all">
-                        <div class="date">
+                        <div class="regdate">
                             <div class="col-auto">
-                                <label for="date" class="col-form-label">신청일자</label>
-                                <label for="start"></label><input type="date" id="date" name="trip-start" value="2024-04-11">
+                                <label for="regdate" class="col-form-label">신청일자</label>
+                                <label for="regdate"></label><input type="regdate" id="regdate" name="regdate" value="2024-04-11">
                             </div>
                         </div>
-                        <div class="vdate">
+                        <div class="visit_date">
                             <div class="col-auto">
-                                <label for="vdate" class="col-form-label">방문일자</label>
-                                <label for="start"></label><input type="date" id="vdate" name="trip-start" value="2024-04-11">
+                                <label for="visit_date" class="col-form-label">방문일자</label>
+                                <label for="visit_date"></label><input type="visit_date" id="visit_date" name="visit_date" value="2024-04-11">
                             </div>
                         </div>
                     </div>
@@ -191,16 +181,15 @@
         function validateForm() {
             let applyfrm = document.applyfrm
             let name = applyfrm.name.value;
-            let pnumber = applyfrm.pnumber.value;
+            let phone_number = applyfrm.phone_number.value;
             let email = applyfrm.email.value;
-            let cname = applyfrm.cname.value;
-            let rank = applyfrm.rank.value;
-            let vcompany = applyfrm.vcompany.value;
-            let departure = applyfrm.departure.value;
-            let vlocation = applyfrm.vlocation.value;
-            let vpurpose = applyfrm.vpurpose.value;
-            let date = applyfrm.date.value;
-            let vdate = applyfrm.vdate.value;
+            let company_name = applyfrm.company_name.value;
+            let job_position = applyfrm.job_position.value;
+            let location = applyfrm.location.value;
+            let department_name = applyfrm.department_name.value;
+            let purpose = applyfrm.purpose.value;
+            let regdate = applyfrm.regdate.value;
+            let visit_date = applyfrm.visit_date.value;
 
             // 필수 필드 확인
             if (!name) {
@@ -209,9 +198,9 @@
                 return false;
             }
 
-            if (!pnumber) {
+            if (!phone_number) {
                 alert('연락처를 입력해주세요.');
-                applyfrm.pnumber.focus();
+                applyfrm.phone_number.focus();
                 return false;
             }
 
@@ -221,47 +210,42 @@
                 return false;
             }
 
-            if (!cname) {
+            if (!company_name) {
                 alert('귀사의 이름을 입력해주세요.');
                 applyfrm.cname.focus();
                 return false;
             }
 
-            if (!rank) {
+            if (!job_position) {
                 alert('직급을 입력해주세요.');
                 applyfrm.rank.focus();
                 return false;
             }
 
-            if (!vcompany) {
-                alert('직급을 입력해주세요.');
-                applyfrm.vcompany.focus();
-                return false;
-            }
 
-            if (!departure) {
+            if (!department_name) {
                 alert('부서를 입력해주세요.');
-                applyfrm.departure.focus();
+                applyfrm.department_name.focus();
                 return false;
             }
 
-            if (!vlocation) {
+            if (!location) {
                 alert('방문할 회사를 입력해주세요.');
-                applyfrm.vlocation.focus();
+                applyfrm.location.focus();
                 return false;
             }
 
-            if (!vpurpose) {
+            if (!purpose) {
                 alert('방문목적을 입력해주세요.');
-                applyfrm.vpurpose.focus();
+                applyfrm.purpose.focus();
                 return false;
             }
 
             // 전화번호 유효성 검사
             let phoneRegex = /^\d{10,11}$/;
-            if (!phoneRegex.test(phone)) {
+            if (!phoneRegex.test(phone_number)) {
                 alert('올바른 핸드폰 번호를 입력해주세요.');
-                applyfrm.pnumber.focus();
+                applyfrm.phone_number.focus();
                 return false;
             }
 
@@ -272,12 +256,13 @@
             let applyfrm = document.applyfrm;
             let formData = new FormData(applyfrm);
             let jsonData = {};
+            console.log(formData)
 
             formData.forEach(function(val, key) {
                 jsonData[key] = val;
             });
-
-            let apiUrl = `/applyok`;
+            console.log(jsonData)
+            let apiUrl = `http://127.0.0.1:8000/apply/applyok`;
             fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -286,15 +271,8 @@
                 },
                 body: JSON.stringify(jsonData)
             })
-                .then(res => res.text())
-                .then(data => {
-                    if (data > 0) {
-                        location.href = '/applyok.html';
-                    } else {
-                        location.href = '/apply.html';
-                    }
-                })
-                .catch(err => alert('입력하신 정보를 다시 한 번 확인해주세요.'));
+            console.log(jsonData)
+
         }
         document.querySelector('#applybtn').addEventListener('click', submitFormData);
 
@@ -308,7 +286,8 @@
         }
 
         // input 요소에 오늘 날짜 설정
-        document.getElementById('start').value = getTodayDate();
+        document.getElementById('regdate').value = getTodayDate();
+        alert(getTodayDate());
     </script>
 
 {% endblock %}

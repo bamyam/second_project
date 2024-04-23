@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from app.schemas.visitors import Visitors
 from app.services.visitors import VisitorsService
 from app.services.employee import EmployeeService
-
+from fastapi import HTTPException
 
 apply_router = APIRouter()
 
@@ -21,6 +21,7 @@ def apply(req: Request):
 
 @apply_router.post('/applyok')
 def applyok(vmdto: Visitors):
+    print(vmdto)
     result = VisitorsService.insert_visitor(vmdto)
     return result.rowcount
 
@@ -28,3 +29,5 @@ def applyok(vmdto: Visitors):
 @apply_router.get('/applyok', response_class=HTMLResponse)
 def applycheck(req: Request):
     return templates.TemplateResponse('apply/applyok.html', {'request': req})
+
+
