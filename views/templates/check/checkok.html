@@ -67,26 +67,26 @@
                     <th>이메일</th>
                     <th>회사이름</th>
                     <th>직급</th>
-                    <th>방문회사</th>
                     <th>부서</th>
                     <th>방문장소</th>
                     <th>방문목적</th>
                     <th>방문일자</th>
                     <th>승인여부</th>
                 </tr>
+                {% for i in info %}
                 <tr>
-                    <th>조주현</th>
-                    <th>010-1234-5678</th>
-                    <th>abc123@naver.com</th>
-                    <th>projectB</th>
-                    <th>사원</th>
-                    <th>SJCOMPANY</th>
-                    <th>인프라팀</th>
-                    <th>서버실</th>
-                    <th>서버점검</th>
-                    <th>2024-04-22</th>
-                    <th>요청중</th>
+                    <th>{{ i.name }}</th>
+                    <th>{{ i.phone_number }}</th>
+                    <th>{{ i.email }}</th>
+                    <th>{{ i.company_name }}</th>
+                    <th>{{ i.job_position }}</th>
+                    <th>{{ i.department_name }}</th>
+                    <th>{{ i.location }}</th>
+                    <th>{{ i.purpose }}</th>
+                    <th>{{ i.visit_date }}</th>
+                    <th>{{ i.status }}</th>
                 </tr>
+                {% endfor %}
             </table>
         </div>
         <div class="guide_text">
