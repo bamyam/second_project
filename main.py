@@ -26,10 +26,6 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(SessionMiddleware, secret_key='02232024duedate')
 
 
-# jinja2 설정
-templates = Jinja2Templates(directory='views/templates')
-app.mount('/static', StaticFiles(directory='views/static'), name='static')
-
 # 외부 route 파일 불러오기
 app.include_router(check_router, prefix='/check')
 app.include_router(svc_router, prefix='/svc')
@@ -37,7 +33,9 @@ app.include_router(intro_router, prefix='/intro')
 app.include_router(admin_router, prefix='/admin')
 app.include_router(apply_router, prefix='/apply')
 
-
+# jinja2 설정
+templates = Jinja2Templates(directory='views/templates')
+app.mount('/static', StaticFiles(directory='views/static'), name='static')
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -45,6 +43,6 @@ async def index(req: Request):
     return templates.TemplateResponse('index.html',{'request': req})    # 파일명과 넘길 데이터
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import uvicorn
-    uvicorn.run('main:app', reload=True)
+    uvicorn.run("main:app", reload=True)
