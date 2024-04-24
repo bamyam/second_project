@@ -28,7 +28,9 @@
     <div class="main_box">
         <div class="ok_box">
             <div class="ok_text">
-            {     }님! 반갑습니다.
+                {% for visitors in visitors_list %}
+                    {{ visitors.name }}님! 반갑습니다.
+                {% endfor %}
             <br>
             방문신청이 접수되었습니다.
             <br>

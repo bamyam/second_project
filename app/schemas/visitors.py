@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 from datetime import datetime
 
@@ -12,7 +14,7 @@ class Visitors(BaseModel):
     purpose: str
     location_id: str
     status: str
-    regdate: datetime
+    regdate: Optional[datetime] = None
     visit_date: str
 
     class Config:
