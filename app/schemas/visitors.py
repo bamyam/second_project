@@ -8,9 +8,9 @@ class Visitors(BaseModel):
     department_name: str
     job_position: str
     phone_number: str
-    employee_name: str
+    employee_id: str
     purpose: str
-    location: str
+    location_id: str
     status: str
     regdate: datetime
     visit_date: str
