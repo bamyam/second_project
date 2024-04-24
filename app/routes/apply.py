@@ -5,7 +5,9 @@ from fastapi.templating import Jinja2Templates
 from app.schemas.visitors import Visitors
 from app.services.visitors import VisitorsService
 from app.services.employee import EmployeeService
+
 from app.services.location import LocationService
+
 from fastapi import HTTPException
 
 apply_router = APIRouter()
