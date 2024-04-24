@@ -48,3 +48,5 @@ class VisitorsService:
             result = sess.execute(stmt).fetchall()
 
         return result
+
+
