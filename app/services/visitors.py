@@ -1,4 +1,4 @@
-from app.models.visitors import Visitors
+from app.models.visitors import Visitors, Location
 from sqlalchemy import insert, select, and_
 from app.dbfactory import Session
 
@@ -11,10 +11,10 @@ class VisitorsService:
 
         with Session() as sess:
             stmt = insert(Visitors).values(data)
-            sess.execute(stmt)
+            result = sess.execute(stmt)
             sess.commit()
 
-            result = sess.query(Visitors.id).filter_by(name=data['name']).scalar()
+             # sess.query(Visitors.id).filter_by(name=data['name']).scalar()
 
             return result
 
@@ -35,7 +35,7 @@ class VisitorsService:
             'location_id': mb.location_id,
             'status': mb.status,
             'regdate': mb.regdate,
-            'visitdate': mb.visit_date
+            'visit_date': mb.visit_date
         }
 
         return data
@@ -44,7 +44,12 @@ class VisitorsService:
     def search_visitor(name, phone_number):
         with Session() as sess:
             # name과 phone_number를 모두 만족하는 방문객 정보 조회
-            stmt = select(Visitors).where(and_(Visitors.name == name, Visitors.phone_number == phone_number))
+            stmt = select(Visitors.name,Visitors.phone_number,Visitors.email,Visitors.company_name
+                          ,Visitors.job_position,Visitors.department_name,Location.location
+                          ,Visitors.purpose,Visitors.visit_date,Visitors.status)\
+                .join(Location)\
+                .where(and_(Visitors.name == name, Visitors.phone_number == phone_number))
+
             result = sess.execute(stmt).fetchall()
 
         return result

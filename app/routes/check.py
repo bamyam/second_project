@@ -21,11 +21,7 @@ def checkok(req: Request):
 
 
 @check_router.post("/checkok")
-async def search_visitor(request: Request, name: str = Form(), phone_number: str = Form()):
+async def search_visitor(req: Request, name: str = Form(), phone_number: str = Form()):
     visitor_info = VisitorsService.search_visitor(name, phone_number)
-    if not visitor_info:
-        raise HTTPException(status_code=404, detail="Visitor not found")
 
-    # visitor_info를 템플릿에 전달하고 템플릿 렌더링
-    return templates.TemplateResponse("checkok.html", {"request": request, "visitor_info": visitor_info})
-    return JSONResponse(content={"result:"})
+    return templates.TemplateResponse('check/checkok.html', {'request': req, 'visitors': visitor_info})
