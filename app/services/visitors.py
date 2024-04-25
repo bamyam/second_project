@@ -8,7 +8,6 @@ class VisitorsService:
     @staticmethod
     def insert_visitor(vmdto):
         data = VisitorsService.visitor_convert(vmdto)
-
         with Session() as sess:
             stmt = insert(Visitors).values(data)
             result = sess.execute(stmt)
@@ -33,8 +32,6 @@ class VisitorsService:
             'employee_id': mb.employee_id,
             'purpose': mb.purpose,
             'location_id': mb.location_id,
-            'status': mb.status,
-            'regdate': mb.regdate,
             'visit_date': mb.visit_date
         }
 

@@ -82,21 +82,31 @@
 {% endblock %}
 {% block script %}
     <script>
-        let btn1 = document.querySelector('#btn1')
+        let btn1 = document.querySelector('#btn1');
         let checkfrm = document.checkfrm;
         btn1.addEventListener('click', () => {
             const formData = new FormData(checkfrm);
+            let jsondata = {};
+            let hasData = false;
 
-            let jsondata = {}
-            formData.forEach(function (val,key){
+            formData.forEach(function (val, key) {
                 jsondata[key] = val;
-            })
-            console.log(jsondata)
-            checkfrm.action = '/check/checkok'
-        checkfrm.submit();
-        });
+                if (val.trim() !== '') { // Check if the value is not empty or contains only whitespaces
+                    hasData = true;
+                }
+            });
 
+            if (!hasData) {
+                alert('정보를 입력해주세요!');
+            } else {
+                console.log(jsondata);
+                checkfrm.action = '/check/checkok';
+                checkfrm.submit();
+            }
+        });
     </script>
+
+
 {% endblock %}
 
 

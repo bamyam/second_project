@@ -23,5 +23,6 @@ def checkok(req: Request):
 @check_router.post("/checkok")
 async def search_visitor(req: Request, name: str = Form(), phone_number: str = Form()):
     visitor_info = VisitorsService.search_visitor(name, phone_number)
-
     return templates.TemplateResponse('check/checkok.html', {'request': req, 'visitors': visitor_info})
+
+
