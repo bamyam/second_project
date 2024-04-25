@@ -1,3 +1,5 @@
+from math import ceil
+
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
@@ -13,11 +15,13 @@ admin_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
 
 
-@admin_router.get('/', response_class=HTMLResponse)
-def admin(req: Request):
-    info = AdminService.select_visit()
+@admin_router.get('/{cpg}', response_class=HTMLResponse)
+def admin(req: Request, cpg: int):
+    stpg = int((cpg - 1) / 15) * 10 + 1
+    info, cnt = AdminService.select_visit(cpg)
+    allpage = ceil(cnt / 15)
     return templates.TemplateResponse('admin/admin.html', {'request': req,
-        'info': info})
+        'info': info, 'cpg': cpg, 'stpg': stpg, 'allpage': allpage, 'baseurl': '/admin/'})
 
 
 @admin_router.post('/accept')

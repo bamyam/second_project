@@ -123,7 +123,36 @@
                     {% endfor %}
                 </table>
             </form>
+            <ul class="pagination justify-content-center mt-4">
+                {% if cpg == 1 %}
+                    <li class="page-item disabled">
+                        {% else %}
+                    <li class="page-item">
+                {% endif %}
+                <a class="page-link" href="{{ baseurl }}{{ cpg - 1 }}">back</a></li>
+
+                {% for idx in range(stpg, stpg + 10) %}
+                    <!-- idx가  allpage보다 같거나 작으면 페이지네이션 출력 -->
+                    {% if idx <= allpage %}
+                        {% if cpg == idx %} <!-- 현재 페이지가 마지막 페이지라면 이전 버튼 비활성 -->
+                            <li class="page-item active">
+                                {% else %}
+                            <li class="page-item">
+                        {% endif %}
+                    <a class="page-link" href="{{ baseurl }}{{ idx }}">{{ idx }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if cpg == allpage %} <!-- 현재 페이지가 마지막 페이지라면 이전 버튼 비활성 -->
+                    <li class="page-item disabled">
+                        {% else %}
+                    <li class="page-item">
+                {% endif %}
+                <a class="page-link" href="{{ baseurl }}{{ cpg + 1 }}">next</a></li>
+            </ul>
         </div>
+
+
 
         <div id="acceptModal" style="z-index: 10">
             <div style="display: none" id="number">01</div>
