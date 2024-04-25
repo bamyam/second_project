@@ -9,11 +9,19 @@
             border: 1px solid blue;
             margin: 70px auto;
             width: 1300px;
-            height: 500px;
             background-color: white;
             box-shadow: 0 15px 30px 0 black;
             text-align: center;
             font-size: 15px;
+        }
+
+        form {
+            margin-bottom: 100px;
+        }
+
+        td {
+            padding-top : 3px;
+            padding-bottom: 3px;
         }
 
         /* 모달 */
@@ -67,7 +75,7 @@
         <div class="request">
             <h2>방문자 관리 페이지</h2>
             <form name="dataForm">
-                <table class="table-bordered container mt-4 " >
+                <table class="table-bordered container mt-4" >
                     <tr>
                         <th>NO</th>
                         <th>접수시간</th>
@@ -100,16 +108,16 @@
                         <td>{{ i.visit_date }}</td>
                         {% if i.status == "N" %}
                         <td>{{ i.status }}(접수 중)</td>
-                        <td>
-                            <button onclick="openModal1(this)" type="button" class="btn btn-primary">승인</button>
-                            <button onclick="openModal2(this)" type="button" class="btn btn-danger">거절</button>
+                        <td >
+                            <button onclick="openModal1(this)" type="button" class="btn btn-primary btn-sm">승인</button>
+                            <button onclick="openModal2(this)" type="button" class="btn btn-danger btn-sm">거절</button>
                         </td>
                         {% elif i.status == "Y" %}
                         <td>{{ i.status }}(승인)</td>
-                        <td>승인완료</td>
+                        <td style="padding-top : 5px; padding-bottom: 5px;">승인완료</td>
                         {% elif i.status == "R" %}
                         <td>{{ i.status }}(거절)</td>
-                        <td>거절완료</td>
+                        <td style="padding-top : 5px; padding-bottom: 5px;">거절완료</td>
                         {% endif %}
                     </tr>
                     {% endfor %}
