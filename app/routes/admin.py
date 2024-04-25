@@ -17,9 +17,10 @@ templates = Jinja2Templates(directory='views/templates')
 
 @admin_router.get('/{cpg}', response_class=HTMLResponse)
 def admin(req: Request, cpg: int):
-    stpg = int((cpg - 1) / 15) * 10 + 1
+    stpg = int((cpg - 1) / 15) * 15 + 1
     info, cnt = AdminService.select_visit(cpg)
     allpage = ceil(cnt / 15)
+    print(stpg)
     return templates.TemplateResponse('admin/admin.html', {'request': req,
         'info': info, 'cpg': cpg, 'stpg': stpg, 'allpage': allpage, 'baseurl': '/admin/'})
 
@@ -32,7 +33,7 @@ def accept(data: dict):
 
     res_url = '/error'
     if result.rowcount > 0:
-        res_url = '/admin'
+        res_url = '/admin/1'
         visitor_name, visitor_email, time = MailService.find_data(number)
         MailService.mail_accepted(visitor_name, visitor_email, time)
 
@@ -47,7 +48,7 @@ def reject(data: dict):
 
     res_url = '/error'
     if result.rowcount > 0:
-        res_url = '/admin'
+        res_url = '/admin/1'
         visitor_name, visitor_email, time = MailService.find_data(number)
         MailService.mail_regected(visitor_name, visitor_email, time, reason)
 
