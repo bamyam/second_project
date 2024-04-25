@@ -13,8 +13,6 @@ class Visitors(BaseModel):
     employee_id: str
     purpose: str
     location_id: str
-    status: str
-    regdate: Optional[datetime] = None
     visit_date: str
 
     class Config:
