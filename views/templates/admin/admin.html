@@ -24,6 +24,13 @@
             padding-bottom: 3px;
         }
 
+        textarea { width: 100%; height: 80px}
+
+        {#버튼이 안 눌러지는 문제 해결#}
+        li > a {
+            z-index: 9;
+        }
+
         /* 모달 */
         #acceptModal {
             display: none;
@@ -68,12 +75,33 @@
             font-size: 20px;
         }
 
+        {#로딩#}
+        .loader {
+            display: none;
+            border : 12px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #1a73e8;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 47%;
+            z-index: 11;
+
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
     </style>
 {% endblock %}
 {% block main %}
     <main>
         <div class="request">
-            <h2>방문자 관리 페이지</h2>
+            <h2 style="margin-top: 15px">방문자 관리 페이지</h2>
             <form name="dataForm">
                 <table class="table-bordered container mt-4" >
                     <tr>
@@ -132,18 +160,18 @@
                 <a class="page-link" href="{{ baseurl }}{{ cpg - 1 }}">back</a></li>
 
                 {% for idx in range(stpg, stpg + 10) %}
-                    <!-- idx가  allpage보다 같거나 작으면 페이지네이션 출력 -->
+
                     {% if idx <= allpage %}
-                        {% if cpg == idx %} <!-- 현재 페이지가 마지막 페이지라면 이전 버튼 비활성 -->
-                            <li class="page-item active">
-                                {% else %}
-                            <li class="page-item">
+                        {% if cpg == idx %}
+                        <li class="page-item active">
+                            {% else %}
+                        <li class="page-item">
                         {% endif %}
-                    <a class="page-link" href="{{ baseurl }}{{ idx }}">{{ idx }}</a></li>
+                <a class="page-link" href="{{ baseurl }}{{ idx }}">{{ idx }}</a></li>
                     {% endif %}
                 {% endfor %}
 
-                {% if cpg == allpage %} <!-- 현재 페이지가 마지막 페이지라면 이전 버튼 비활성 -->
+                {% if cpg == allpage %}
                     <li class="page-item disabled">
                         {% else %}
                     <li class="page-item">
@@ -151,7 +179,6 @@
                 <a class="page-link" href="{{ baseurl }}{{ cpg + 1 }}">next</a></li>
             </ul>
         </div>
-
 
 
         <div id="acceptModal" style="z-index: 10">
@@ -205,9 +232,9 @@
                     </tr>
                 </table>
             </div>
-            <div>
-                <button onclick="closeModal1()" type="button">이전</button>
-                <button type="button" id="accept_btn">승인</button>
+            <div style="text-align: right">
+                <button onclick="closeModal1()" type="button" class="btn btn-light">이전</button>
+                <button type="button" id="accept_btn" class="btn btn-primary">승인</button>
             </div>
         </div>
 
@@ -250,12 +277,13 @@
                 <textarea id="reason" class="textarea"></textarea>
 
             </div>
-            <div>
-                <button onclick="closeModal2()" type="button">이전</button>
-                <button type="button" id="reject_btn">거절</button>
+            <div style="text-align: right; margin-top: 7px">
+                <button onclick="closeModal2()" type="button" class="btn btn-light">이전</button>
+                <button type="button" id="reject_btn" class="btn btn-danger">거절</button>
             </div>
         </div>
         <div id="overlay"></div>
+        <div class="loader"></div>
     </main>
 {% endblock %}
 
@@ -329,6 +357,7 @@ let closeModal2 = () => {
 let accept_btn = document.querySelector('#accept_btn');
 
 accept_btn.addEventListener('click', () => {
+    document.querySelector(".loader").style.display = "block";
     let jsondata = {};
     jsondata['number'] = document.getElementById("number").innerText;
 
@@ -351,6 +380,7 @@ accept_btn.addEventListener('click', () => {
 let reject_btn = document.querySelector('#reject_btn');
 
 reject_btn.addEventListener('click', () => {
+    document.querySelector(".loader").style.display = "block";
     let jsondata = {};
     jsondata['number'] = document.getElementById("number_r").innerText;
     jsondata['reason'] = document.getElementById("reason").value;
