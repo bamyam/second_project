@@ -65,7 +65,7 @@
                                 <label for="phone_number" class="col-form-label">전화번호</label>
                             </div>
                             <div class="col-auto">
-                                <input type="text" id="phone_number" name="phone_number" class="form-control">
+                                <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="- 없이 숫자만 입력">
                             </div>
                         </div>
                         <div id="email">
@@ -104,7 +104,7 @@
                     <div class="info_minibox2">
                         <div id="location">
                             <div class="col-auto">
-                                <label for="location" class="col-form-label">방문할 회사</label>
+                                <label for="location" class="col-form-label">방문장소</label>
                                 <select class="form-select" name="location_id" aria-label="Default select example">
                                     {% for location in location_list %}
                                         <option value="{{ location.id }}">{{location.location}}</option>
